@@ -1,0 +1,23 @@
+FROM python:3.9
+
+COPY ./requirements.txt /requirements.txt
+
+#Dependencies for open-CV
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+# RUN pip install -r /requirements.txt
+# RUN pip install transformers
+RUN python3 -m pip install  \
+    shap                    \
+    tensorflow              \
+    tf-keras                \
+    matplotlib              \
+    ipython                 \
+    transformers            \
+    fastapi[standard]
+
+WORKDIR /repo/
+
+EXPOSE 8000
+
+CMD ["fastapi", "run", "textApi.py"]

@@ -1,0 +1,12 @@
+venv
+newenv
+data/*
+__pycache__
+exports/*
+Ferplus/*
+ferplus2/*
+Fer3/
+*.ipynb_checkpoints
+explain/*
+test/*
+trainnings/*

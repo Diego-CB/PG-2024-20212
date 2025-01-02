@@ -1,0 +1,15 @@
+FROM pytorch/pytorch:2.4.0-cuda11.8-cudnn9-runtime
+
+COPY ./requirements.txt /requirements.txt
+
+#Dependencies for open-CV
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+RUN pip install -r /requirements.txt
+RUN pip install flask
+
+WORKDIR /repo/
+
+EXPOSE 5000
+
+CMD ["python", "serveModel.py"]
